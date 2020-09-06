@@ -95,13 +95,13 @@ const Dashboard = (props) => {
 	      		const data = res.data.data;
 	      		changeCnData(data)
 	      		changeShortSub(res.data.subject)
-	      		//To render the list first time after fetching
-	      		var Difference_In_Time = new Date().getTime() - startDate.getTime(); 
-				var Difference_In_Days = Math.ceil(Difference_In_Time / (1000 * 3600 * 24));
+// 	      		//To render the list first time after fetching
+// 	      		var Difference_In_Time = new Date().getTime() - startDate.getTime(); 
+// 				var Difference_In_Days = Math.ceil(Difference_In_Time / (1000 * 3600 * 24));
 				//update_List(the whole list, the index of the list item)
 
-	      		update_List(res.data.data, parseInt(Difference_In_Days) - 1)
-	      		changeTopicsDate(parseInt(Difference_In_Days) -1 )
+	      		update_List(res.data.data, topicsDate)
+// 	      		changeTopicsDate(parseInt(Difference_In_Days) -1 )
 	      	} else {
 				document.getElementById('topic-list').innerHTML = 'Some error occured'	      		
 	      	}
@@ -162,13 +162,13 @@ const Dashboard = (props) => {
 	      		const data = res.data.data;
 	      		changeCnData(data)
 	      		changeShortSub(res.data.subject)
-	      		//To render the list first time after fetching
-	      		var Difference_In_Time = new Date().getTime() - startDate.getTime(); 
-				var Difference_In_Days = Math.ceil(Difference_In_Time / (1000 * 3600 * 24));
+// 	      		//To render the list first time after fetching
+// 	      		var Difference_In_Time = new Date().getTime() - startDate.getTime(); 
+// 				var Difference_In_Days = Math.ceil(Difference_In_Time / (1000 * 3600 * 24));
 				//update_List(the whole list, the index of the list item)
 
-	      		update_List(res.data.data, parseInt(Difference_In_Days) - 1)
-	      		changeTopicsDate(parseInt(Difference_In_Days) -1 )
+	      		update_List(res.data.data, topicsDate)
+// 	      		changeTopicsDate(parseInt(Difference_In_Days) -1 )
 	      	} else {
 				document.getElementById('topic-list').innerHTML = 'Some error occured'	      		
 	      	}
