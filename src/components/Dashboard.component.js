@@ -100,9 +100,8 @@ const Dashboard = (props) => {
 				var Difference_In_Days = Math.ceil(Difference_In_Time / (1000 * 3600 * 24));
 				//update_List(the whole list, the index of the list item)
 
-	      		update_List(res.data.data, topicsDate)
-
-	      		changeTopicsDate(parseInt(Difference_In_Days))
+	      		update_List(res.data.data, parseInt(Difference_In_Days) - 1)
+	      		changeTopicsDate(parseInt(Difference_In_Days) -1 )
 	      	} else {
 				document.getElementById('topic-list').innerHTML = 'Some error occured'	      		
 	      	}
@@ -168,8 +167,8 @@ const Dashboard = (props) => {
 				var Difference_In_Days = Math.ceil(Difference_In_Time / (1000 * 3600 * 24));
 				//update_List(the whole list, the index of the list item)
 
-	      		update_List(res.data.data, topicsDate)
-	      		changeTopicsDate(parseInt(Difference_In_Days))
+	      		update_List(res.data.data, parseInt(Difference_In_Days) - 1)
+	      		changeTopicsDate(parseInt(Difference_In_Days) -1 )
 	      	} else {
 				document.getElementById('topic-list').innerHTML = 'Some error occured'	      		
 	      	}
