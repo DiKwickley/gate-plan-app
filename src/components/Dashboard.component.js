@@ -35,7 +35,7 @@ const Topic = (props) => {
 		<div key={props.index} className="container-fluid p-1 my-1 border">
 			<p className="text-danger">{props.topic}</p>
 			<p className="font-weight-bold">{props.video} : {props.time}</p>
-// 			<p> status: <span id={'span'+props.videoIndex}> </span> <span> <button class="btn btn-primary font-weight-bold" id={props.sub +'/' + props.videoIndex + '/' } onClick={statusHandler}>Change status </button></span> </p>
+ 			
 			
 		</div>
 		)
