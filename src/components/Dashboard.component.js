@@ -11,7 +11,7 @@ const Topic = (props) => {
 
 	useEffect(() => {
 		// console.log(props)
-		document.getElementById('span'+props.videoIndex).innerHTML = props.status
+		
 	})
 	
 
