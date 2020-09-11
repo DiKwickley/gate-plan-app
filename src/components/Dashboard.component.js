@@ -75,7 +75,7 @@ const TopicList = (props) =>{
 
 const Dashboard = (props) => {
 
-	const [cnHours, changeCnHours] = useState({'secs' :3600})
+	const [cnHours, changeCnHours] = useState({'secs' :5400})
 	const [date, changeDate] = useState(new Date())
 	const [cnData, changeCnData] = useState('')
 	const [startDate, changeStartDate] = useState(new Date('9/1/2020'))
@@ -119,27 +119,34 @@ const Dashboard = (props) => {
 	const update_List = (cnDataList, topicIndex) => {
 		var cnDataObj = {}
 		var time = 0
+
 		var days = 0
+		if(shortSub == 'cn' || shortSub == 'pds'){
+			days = 0
+		} else {
+			days = 1
+		}
 		cnDataObj[days] = []
 		
 		for(var x=0; x<cnDataList.length; x+=1){
 
-			
-				if(time > cnHours.secs){
-					x -= 1
-					time = 0
-					days += 1
-					cnDataObj[days] = []
-				} else {
-					cnDataObj[days].push(cnDataList[x])
-					time += parseInt(cnDataList[x]['seconds'])
-					// console.log(time)
-				}
+				
+					if(time > cnHours.secs){
+						x -= 1
+						time = 0
+						days += 2
+						cnDataObj[days] = []
+					} else {
+						cnDataObj[days].push(cnDataList[x])
+						time += parseInt(cnDataList[x]['seconds'])
+						// console.log(time)
+					}	
+				
 			
 
 		}
 		changeEndDate(addDays(startDate, days))
-
+		console.log(cnDataObj)
 		console.log('day: ', topicIndex, cnDataObj[topicIndex]) //topics for selected date
 		changeDayList(cnDataObj[topicIndex])
 		// console.log(cnDataObj) All topics
@@ -152,6 +159,8 @@ const Dashboard = (props) => {
 		let subject = event.target.id
 		console.log(event.target.innerHTML)
 		changeCurrentSub(event.target.innerHTML)
+		changeShortSub(event.target.id)
+		console.log("SHORT: ", event.target.id)
 		axios.get('https://gate-plan.herokuapp.com/plan/'+subject)
 	      .then(res => {
 	      	if(res.status === 200){
@@ -204,9 +213,10 @@ const Dashboard = (props) => {
 				
 				<h1> Dashboard : Aniket's Gate Plan </h1>
 				<p> Phase 1 [Sep 2020 - Dec 2020] </p>
-				<button id="cn" className="btn btn-danger text-white m-1 font-weight-bold" onClick={changeSubject}> Computer Networks </button>
-				<button id="pds" className="btn btn-danger text-white m-1 font-weight-bold" onClick={changeSubject}> Programming and Data Structures</button>
-				<button id="db" className="btn btn-danger text-white m-1 font-weight-bold" onClick={changeSubject}> Database </button>
+				<button id="cn" className="btn btn-danger text-white m-1 font-weight-bold" onClick={changeSubject}>Computer Networks </button>
+				<button id="pds" className="btn btn-danger text-white m-1 font-weight-bold" onClick={changeSubject}>Programming and Data Structures</button>
+				<button id="db" className="btn btn-danger text-white m-1 font-weight-bold" onClick={changeSubject}>Database </button>
+				<h5> Groups : [cn, pds] , [db, dl] </h5>
 				<h4> {currentSub} : {(cnHours.secs/(60*60)).toPrecision(2)} hours  </h4>
 				<p>Start Date:<span className="font-weight-bold text-success"> {startDate.toDateString()} </span> | End Date: <span className="font-weight-bold text-danger"> {endDate.toDateString()} </span> </p>
 				<div className="container-fluid mx-auto row text-center">
