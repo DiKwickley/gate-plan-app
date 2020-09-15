@@ -78,7 +78,7 @@ const Dashboard = (props) => {
 	const [cnHours, changeCnHours] = useState({'secs' :5400})
 	const [date, changeDate] = useState(new Date())
 	const [cnData, changeCnData] = useState('')
-	const [startDate, changeStartDate] = useState(new Date('9/1/2020'))
+	const [startDate, changeStartDate] = useState(new Date('9/4/2020'))
 	const [endDate, changeEndDate] = useState(new Date())
 	const [topicsDate, changeTopicsDate] = useState(0)
 	const [dayList, changeDayList] = useState()
